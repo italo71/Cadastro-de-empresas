@@ -26,10 +26,11 @@
     </style>
 
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
+
         label {
             display: block;
             border-radius: 5px;
@@ -280,6 +281,14 @@
                                 </div>
                             </li>
                             <li role="presentation" class="tab-select" id="aba_integracao_mgf">
+                                <a href="#pagina_integracao_link" data-toggle="tab" onclick="alterTab(3)">
+                                    Links Integração
+                                </a>
+                                <div style="display: inline-block; position: relative; top: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 14pt;">autopay</span>
+                                </div>
+                            </li>
+                            <li role="presentation" class="tab-select" id="aba_integracao_mgf">
                                 <a href="#pagina_integracao_mgf" data-toggle="tab" onclick="alterTab(3)">
                                     Integração MGF
                                 </a>
@@ -334,7 +343,7 @@
                                 <div style="display: inline-block; position: relative; top: 4px;">
                                     <span class="material-symbols-outlined" style="font-size: 14pt;">
                                         groups_2
-                                        </span>
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -601,18 +610,52 @@
                             <select class="form-select" aria-label="Default select example" id="importacao_eventos"
                                 style="display: inline-block;">
                                 <option value="" selected>Importação de Eventos</option>
-                                <option value="1">Assictance</option>
-                                <option value="2">SGA</option>
-                                <option value="3">N/A</option>
-                                <option value="4">UNIKAS</option>
-                                <option value="5">SEVEN</option>
-                                <option value="6">GENESIS</option>
-                                <option value="7">MINAS BRASIL</option>
+                                <option value="1" onclick="alterarImportacao(0)">Assictance</option>
+                                <option value="2" onclick="alterarImportacao(0)">SGA</option>
+                                <option value="3" onclick="alterarImportacao(0)">N/A</option>
+                                <option value="4" onclick="alterarImportacao(1)">MUTUAL</option>
+                                <option value="5" onclick="alterarImportacao(0)">SEVEN</option>
+                                <option value="6" onclick="alterarImportacao(1)">GENESIS</option>
+                                <option value="7" onclick="alterarImportacao(1)">MINAS BRASIL</option>
+                                <option value="8" onclick="alterarImportacao(2)">SIPROV</option>
                             </select>
                         </div>
                         <div class="div-input form-floating mb-3 m-l-10 col-6" style="display: inline-block;">
                             <!-- Tabelas -->
-
+                        </div>
+                    </div>
+                    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+                    <!-- Integração Links -->
+                    <div class="tab-pane row" id="pagina_integracao_link" style="display: none;">
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="usuarioImportacaoLink"
+                                id="login_importacao_link" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Usuário</label>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="usuarioImportacao"
+                                id="senha_importacao_link" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Senha</label>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="usuarioImportacao"
+                                id="token_importacao_link" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Token <span id="tipo_token_link"></span></label>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="link1_importacao"
+                                id="link1_importacao_link" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Link</label>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="link2_importacao"
+                                id="link2_importacao_link" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Link 2</label>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="link3_importacao"
+                                id="link3_importacao_link" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Link 3</label>
                         </div>
                     </div>
                     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
@@ -721,7 +764,7 @@
                             <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
                                 <input class="form-control" type="text" autocomplete="off" name="tokenPrismatec"
                                     id="token_prismatec" placeholder=".">
-                                <label for="" id="" style="width: 400px;">Token Clente (Prismatec)</label>
+                                <label for="" id="" style="width: 400px;">Token Cliente (Prismatec)</label>
                             </div>
                             <div class="div-input form-floating mb-3 m-l-10 col-4" style="display: inline-block;">
                                 <input class="form-control" type="text" autocomplete="off" name="tokenWhatsapp"
@@ -784,7 +827,7 @@
                                     style="display: inline-block; margin-left: -20px;">Dias Corridos</label>
                             </div>
                         </div>
-                        <div class="div-input mb-3 m-l-10 col-12 justify-content-center" style="display: inline-block;">
+                        <div class="div-input mb-3 m-l-10 col-12" style="margin-left: 90px;">
                             <textarea name="" id="texto_whatsapp" cols="159" rows="5"></textarea>
                         </div>
                         <div class="col-12 justify-content-center">
@@ -887,11 +930,11 @@
             </div>
         </div>
     </div>
-<!--  -->
+    <!--  -->
 
     <script>
         window.onload = () => {
-            alterTab(0);
+            alterTab(3);
             document.getElementById('upload-btn').style.display = 'none'
         }
 
@@ -917,6 +960,25 @@
                 document.getElementById(id).checked = 0
             else
                 document.getElementById(id).checked = 1
+        }
+
+        function alterarImportacao(tipo) {
+            document.getElementById('login_importacao_link').style.display = 'none'
+            document.getElementById('senha_importacao_link').style.display = 'none'
+            document.getElementById('token_importacao_link').style.display = 'none'
+            document.getElementById('link2_importacao_link').style.display = 'none'
+            document.getElementById('link3_importacao_link').style.display = 'none'
+            if (tipo == 1) {
+                document.getElementById('login_importacao_link').style.display = ''
+                document.getElementById('senha_importacao_link').style.display = ''
+            }
+            if (tipo == 2) {
+                document.getElementById('login_importacao_link').style.display = ''
+                document.getElementById('senha_importacao_link').style.display = ''
+                document.getElementById('token_importacao_link').style.display = ''
+                document.getElementById('link2_importacao_link').style.display = ''
+                document.getElementById('link3_importacao_link').style.display = ''
+            }
         }
     </script>
 
@@ -959,4 +1021,5 @@
     <!-- Jquery CountTo Plugin Js -->
     <script src="https://siga.arcoconsultoria.com/SIGA/libsiga/plugins/jquery-countto/jquery.countTo.js"></script>
 </body>
+
 </html>
