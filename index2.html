@@ -941,7 +941,7 @@
 
     <script>
         window.onload = () => {
-            alterTab(3);
+            alterTab(0);
             document.getElementById('upload-btn').style.display = 'none'
             document.getElementById('login_importacao_link').setAttribute('readonly', 'readonly')
             document.getElementById('senha_importacao_link').setAttribute('readonly', 'readonly')
@@ -953,7 +953,6 @@
         }
 
         function uploadBtn(tipo) {
-            console.log(tipo)
             document.getElementById('upload-btn').style.display = tipo
         }
 
@@ -975,8 +974,9 @@
             else
                 document.getElementById(id).checked = 1
         }
+        let tipo = null;
         function alterarImportacao() {
-            let tipo = document.getElementById('importacao_eventos').value
+            tipo = document.getElementById('importacao_eventos').value
             document.getElementById('login_importacao_link_div').style.display = 'none'
             document.getElementById('senha_importacao_link_div').style.display = 'none'
             document.getElementById('token_importacao_link_div').style.display = 'none'
